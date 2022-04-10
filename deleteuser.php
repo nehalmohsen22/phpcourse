@@ -6,7 +6,7 @@
     }
 	if($data !== -1){
         require "dbconnect.php";
-        deleteuser($data);
+        $object->deleteuser($data);
     }
 
     $filename = 'users.txt';

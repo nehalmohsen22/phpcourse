@@ -1,5 +1,5 @@
 <?php 
-
+class DB{
 function connect(){    
 $dsn = 'mysql:dbname=users;host=127.0.0.1;port=3307;'; 
 $user = 'root';
@@ -16,7 +16,7 @@ catch(Exception $e){
 function adduser($data, $image = "")
 {
     try{
-        $db= connect();
+        $db=$this-> connect();
         if($db){
             if(isset($image)){
                 $insert_query = 'insert into user (`fname`,`lname`,`gender`,`email`,`username`,`password`,`phone`,`image`) values (?,?,?,?,?,?,?,"'.$image.'")';
@@ -52,7 +52,7 @@ function adduser($data, $image = "")
 function deleteuser($id)
 {
     try{
-        $db=connect();
+        $db=$this->connect();
         if($db){
             $delete_query = 'delete from user where `id` =:id';
             $del_stmt = $db->prepare($delete_query);
@@ -73,7 +73,7 @@ function deleteuser($id)
 function update($id,$data)
 {
     try{
-        $db=connect();
+        $db=$this->connect();
         if($db){
             $lname = $data['lname'];
             $fname = $data['fname'];
@@ -105,7 +105,7 @@ function update($id,$data)
 function selectall()
 {
     try{
-        $db=connect();
+        $db=$this->connect();
         if($db){
             $select_query = 'select * from user';
             $select_stmt = $db->prepare($select_query);
@@ -124,7 +124,7 @@ function selectall()
 function selectuser($id)
 {
     try{
-        $db=connect();
+        $db=$this->connect();
         if($db){
             $select_query = 'select * from user where id=:id';
             $select_stmt = $db->prepare($select_query);
@@ -141,6 +141,9 @@ function selectuser($id)
         echo $e->getMessage();
     }
 }
+
+}
+$object =new DB();
 
 
 ?>

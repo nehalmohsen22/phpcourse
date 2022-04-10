@@ -14,7 +14,7 @@
 
     $fields = array();
     if($data !== -1 && $data * -1 <= 0){
-        $fields = selectuser($data);
+        $fields = $object->selectuser($data);
         if($fields) {
           $fields = $fields[0];
         }

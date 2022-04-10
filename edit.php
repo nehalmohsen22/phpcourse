@@ -8,7 +8,7 @@ $userid = $_GET["data"];
 
 try {
     require "dbconnect.php";
-    $db= connect();
+    $db= $object->connect();
     // $select_user= selectuser($userid) ;
     $select_user = "select * from `user` where `ID` = $userid";
     $update_stmt = $db->prepare($select_user);

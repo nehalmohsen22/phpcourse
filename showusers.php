@@ -38,7 +38,7 @@
         <tbody></tbody>
         <?php
 
-        $users = selectall();
+        $users = $object->selectall();
         if($users){
             foreach ($users as $user) {
                 echo "<tr>";
@@ -49,7 +49,7 @@
                 echo "<td>".$user-> username."</td>";
                 echo "<td> <a class='view' href='user.php?data=".$user->id."'>View</a> </td>";
                 echo "<td> <a class='edit' href='edit.php?data=".$user->id."'>Edit</a> </td>";
-                echo "<td> <a class='delete' href='deleteuser.php?key=".$user->id."'>Delete</a> </td>";
+                echo "<td> <a class='delete' href='deleteuser.php?data=".$user->id."'>Delete</a> </td>";
                 echo "</tr>";
             }
         }
